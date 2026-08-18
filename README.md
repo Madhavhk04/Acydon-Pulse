@@ -7,7 +7,8 @@ Built as part of the **Acdyon Technologies Frontend Engineering Challenge** (Par
 ---
 
 ## 🚀 Live Demo & Interaction Video
-* **Walkthrough Recording**: The visual flow showing browser testing, telemetry details, and the retro override console can be viewed in the walkthrough log inside the artifact folder.
+* **Live Website**: [https://acydon-pulse.vercel.app/](https://acydon-pulse.vercel.app/)
+* **Walkthrough Video**: [https://acydon-pulse.vercel.app/pulse_home_page_flow.webp](https://acydon-pulse.vercel.app/pulse_home_page_flow.webp)
 * **Vite Preview**: Run locally using the guide below to interact with the queue.
 
 ---
