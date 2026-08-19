@@ -109,7 +109,7 @@ const explodedItems = document.querySelectorAll('.exploded-item');
 // 3. THREE.JS 3D WORKSPACE SETUP
 // ==========================================
 
-const canvas = document.getElementById('luma-webgl-canvas');
+const canvas = document.getElementById('lumos-webgl-canvas');
 let renderer, scene, camera;
 
 // Lamp 3D Hierarchical Joints
@@ -792,9 +792,9 @@ function setupToggleSwitch() {
     lampOn = !lampOn;
 
     if (lampOn) {
-      btnLampToggle.textContent = 'Turn LUMA off';
+      btnLampToggle.textContent = 'Turn LUMOS off';
       btnLampToggle.classList.add('active');
-      lampStatusText.textContent = 'LUMA • ACTIVE';
+      lampStatusText.textContent = 'LUMOS • ACTIVE';
       badgePulse.classList.add('active');
 
       const logoDot = document.getElementById('logo-dot-glow');
@@ -806,9 +806,9 @@ function setupToggleSwitch() {
         updateSlidersUI();
       }
     } else {
-      btnLampToggle.textContent = 'Turn LUMA on';
+      btnLampToggle.textContent = 'Turn LUMOS on';
       btnLampToggle.classList.remove('active');
-      lampStatusText.textContent = 'LUMA • OFF';
+      lampStatusText.textContent = 'LUMOS • OFF';
       badgePulse.classList.remove('active');
 
       const logoDot = document.getElementById('logo-dot-glow');

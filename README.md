@@ -1,6 +1,6 @@
-# LUMA
+# LUMOS
 
-LUMA is a premium interactive landing page and hardware emulator for a fictional smart architectural desk lamp and lighting environment.
+LUMOS is a premium interactive landing page and hardware emulator for a fictional smart architectural desk lamp and lighting environment.
 
 The site is built as a digital product showroom. It lets visitors interact with a custom-rendered physics canvas lamp, test scene presets, drag timeline schedule sliders, and synchronize configurations with a mock account profile.
 
@@ -24,7 +24,7 @@ The site is built as a digital product showroom. It lets visitors interact with 
 - Drag timeline handles from 08:00 to 20:00 to see how the lamp's light output transitions over a normal day.
 
 ### 5. Hidden Engineering HUD Easter Egg
-- Clicking the **LUMA logo 5 times** opens an engineering dashboard display detailing LED temperatures, power ratings, voltage feedback, and real-time microvolt streams.
+- Clicking the **LUMOS logo 5 times** opens an engineering dashboard display detailing LED temperatures, power ratings, voltage feedback, and real-time microvolt streams.
 
 ---
 

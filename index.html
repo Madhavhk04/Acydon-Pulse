@@ -6,9 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary SEO Meta Tags -->
-    <title>LUMA — Smart Architectural 3D Desk Lamp</title>
-    <meta name="title" content="LUMA — Smart Architectural 3D Desk Lamp" />
-    <meta name="description" content="Experience LUMA. A premium smart architectural desk lamp that adapts your environment to focus, reading, and circadian wind-down presets in real 3D." />
+    <title>LUMOS — Light that knows how you work.</title>
+    <meta name="title" content="LUMOS — Light that knows how you work." />
+    <meta name="description" content="LUMOS is a premium adaptive lighting system designed around the way you work." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="LUMOS — Light that knows how you work." />
+    <meta property="og:description" content="LUMOS is a premium adaptive lighting system designed around the way you work." />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +26,7 @@
   <body>
     <!-- Fixed Cinematic WebGL 3D Canvas Backdrop -->
     <div id="canvas-container">
-      <canvas id="luma-webgl-canvas"></canvas>
+      <canvas id="lumos-webgl-canvas"></canvas>
     </div>
 
     <!-- Minimal Navigation Bar -->
@@ -34,7 +39,7 @@
               <circle cx="12" cy="12" r="4" fill="#D8C39A" id="logo-dot-glow" />
             </svg>
           </span>
-          <span class="logo-text">LUMA</span>
+          <span class="logo-text">LUMOS</span>
         </a>
         <nav class="nav-links" id="main-nav">
           <a href="#playground-section" class="nav-link-item">Product</a>
@@ -61,19 +66,19 @@
               how you work.
             </h1>
             <p class="hero-subtitle">
-              LUMA adapts your workspace to the moment — from deep focus to late-night wind-down.
+              LUMOS adapts your workspace to the moment — from deep focus to late-night wind-down.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" id="cta-create-account-hero">Create your LUMA account →</button>
-              <a href="#playground-section" class="btn btn-secondary">Explore LUMA</a>
+              <button class="btn btn-primary" id="cta-create-account-hero">Create your LUMOS account →</button>
+              <a href="#playground-section" class="btn btn-secondary">Explore LUMOS</a>
             </div>
 
             <!-- Activation Switch -->
             <div class="lamp-toggle-container">
-              <button class="btn btn-lamp-toggle" id="btn-lamp-toggle">Turn LUMA on</button>
+              <button class="btn btn-lamp-toggle" id="btn-lamp-toggle">Turn LUMOS on</button>
               <div class="lamp-status-hud">
                 <span class="hud-label">STATUS:</span>
-                <span class="hud-value" id="lamp-status-text">LUMA • OFF</span>
+                <span class="hud-value" id="lamp-status-text">LUMOS • OFF</span>
               </div>
             </div>
           </div>
@@ -328,11 +333,11 @@
           </div>
 
           <div class="save-action-details">
-            <h2 class="save-action-title">Save this setup to your LUMA account.</h2>
+            <h2 class="save-action-title">Save this setup to your LUMOS account.</h2>
             <p class="save-action-desc">
-              Your LUMA account synchronizes saved scene calibrations immediately with your physical hardware lamp, maintaining lighting presets across profiles.
+              Your LUMOS account synchronizes saved scene calibrations immediately with your physical hardware lamp, maintaining lighting presets across profiles.
             </p>
-            <button class="btn btn-primary" id="cta-save-preset">Create your LUMA account →</button>
+            <button class="btn btn-primary" id="cta-save-preset">Create your LUMOS account →</button>
           </div>
         </div>
       </section>
@@ -342,10 +347,10 @@
         <div class="container text-center">
           <h2 class="cta-title">Make your workspace yours.</h2>
           <p class="cta-description">
-            Create your LUMA profile, store custom preset configurations, and adapt illumination curves organically.
+            Create your LUMOS profile, store custom preset configurations, and adapt illumination curves organically.
           </p>
           <div class="cta-actions">
-            <button class="btn btn-primary" id="cta-final-register">Create your LUMA account →</button>
+            <button class="btn btn-primary" id="cta-final-register">Create your LUMOS account →</button>
           </div>
         </div>
       </section>
@@ -355,8 +360,8 @@
     <footer class="footer">
       <div class="container footer-container">
         <div class="footer-left">
-          <span class="footer-logo">LUMA</span>
-          <span class="footer-copyright">© 2026 LUMA Technologies Inc. All rights reserved.</span>
+          <span class="footer-logo">LUMOS</span>
+          <span class="footer-copyright">© 2026 LUMOS Technologies Inc. All rights reserved.</span>
         </div>
         <div class="footer-right">
           <span class="footer-challenge-tag">Fictional Hardware Showroom</span>
@@ -371,7 +376,7 @@
         
         <!-- Signup form state -->
         <div class="modal-form-view" id="modal-form-view">
-          <span class="modal-logo">LUMA</span>
+          <span class="modal-logo">LUMOS</span>
           <h3 class="modal-title">Your light, remembered.</h3>
           <p class="modal-subtitle">Save your current lighting configurations into your new profile.</p>
           
@@ -402,7 +407,7 @@
               <polyline points="22 4 12 14.01 9 11.01" />
             </svg>
           </div>
-          <h3 class="modal-title">Your LUMA is ready.</h3>
+          <h3 class="modal-title">Your LUMOS is ready.</h3>
           <p class="modal-subtitle">
             Account created. Presets have been synchronized with your hardware emulator.
           </p>
@@ -415,18 +420,18 @@
     <div class="easter-egg-overlay hidden" id="engineering-console">
       <div class="retro-terminal">
         <div class="retro-header">
-          <span>LUMA INTERNAL HARDWARE DIAGNOSTICS</span>
+          <span>LUMOS INTERNAL HARDWARE DIAGNOSTICS</span>
           <button class="btn-close-retro" id="close-eng-btn">CLOSE [ESC]</button>
         </div>
         <div class="retro-body">
           <div class="system-logs-retro">
-            <p class="text-cyan">>>> CONNECTED TO LUMA DESK ASSEMBLY PORT 4 [V1.4.2]</p>
+            <p class="text-cyan">>>> CONNECTED TO LUMOS DESK ASSEMBLY PORT 4 [V1.4.2]</p>
             <p class="text-green">LED CORE TEMPERATURE: <span id="eng-temp">31.4°C</span></p>
             <p class="text-green">POWER RATING CONSUMPTION: <span id="eng-power">18.2W</span></p>
             <p class="text-green">LIGHT ENGINE MATRIX: ONLINE</p>
             <p class="text-green">AMBIENT SENSOR ILLUMINANCE: ACTIVE</p>
             <p class="text-yellow">VOLTAGE RAIL FEEDBACK: <span id="eng-voltage">12.04V</span></p>
-            <p class="text-yellow">LUMA STATUS REGISTER: 0x00FF812A</p>
+            <p class="text-yellow">LUMOS STATUS REGISTER: 0x00FF812A</p>
             <p class="text-cyan">>>> [INFO] Engineering HUD Unlocked. Tracing LED microvolt outputs below:</p>
             <div id="eng-volts-list" style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; color: #888;">
               <!-- Javascript real-time values inserted here -->

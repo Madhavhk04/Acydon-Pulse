@@ -1,11 +1,11 @@
-# Engineering Decisions — LUMA Smart Lighting 3D Showroom
+# Engineering Decisions — LUMOS Smart Lighting 3D Showroom
 
-This document outlines the technical and product design decisions made while developing the landing page for **LUMA**.
+This document outlines the technical and product design decisions made while developing the landing page for **LUMOS**.
 
 ---
 
 ### 1. Conceptual Pivot & Product Ingestion Strategy
-We replaced the background task observer website with **LUMA**, a premium smart architectural desk lamp and lighting preset account. 
+We replaced the background task observer website with **LUMOS**, a premium smart architectural desk lamp and lighting preset account. 
 - **The Core Goal**: Sell the physical material design and software presets immediately.
 - **Ingestion Strategy**: Instead of standard marketing copy, the page serves as a **digital showroom**. Placing an interactive hardware emulator directly on the screen allows developers to "touch" the lamp before buying it. They see the physical head adjust angles, and experience warm illumination gradients spreading across the page.
 - **The Rationale for Accounts**: Users save custom scene values (brightness and Kelvins). The signup CTA becomes a natural step to sync settings with their hardware.
