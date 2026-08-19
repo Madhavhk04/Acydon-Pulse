@@ -1,91 +1,63 @@
-# Acydon Pulse — Real-Time Background Job Observability
+# LUMA
 
-**Acydon Pulse** is a premium, high-fidelity developer landing page and interactive observability console designed for modern background job queues (e.g., Sidekiq, Celery, BullMQ). It gives engineers instant visibility into background task arguments, execution latency, and SQL query performance in real-time.
+LUMA is a premium interactive landing page and hardware emulator for a fictional smart architectural desk lamp and lighting environment.
 
-Built as part of the **Acdyon Technologies Frontend Engineering Challenge** (Part 2: The Premium Home Page), the project focuses on taste, clean typography, responsive design, and honest product demonstration over fabricated marketing claims.
-
----
-
-## 🚀 Live Demo & Interaction Video
-* **Live Website**: [https://acydon-pulse.vercel.app/](https://acydon-pulse.vercel.app/)
-* **Walkthrough Video**: [https://acydon-pulse.vercel.app/pulse_home_page_flow.webp](https://acydon-pulse.vercel.app/pulse_home_page_flow.webp)
-* **Vite Preview**: Run locally using the guide below to interact with the queue.
+The site is built as a digital product showroom. It lets visitors interact with a custom-rendered physics canvas lamp, test scene presets, drag timeline schedule sliders, and synchronize configurations with a mock account profile.
 
 ---
 
-## ✨ Key Features
+## ✨ Features
 
-1. **Integrated Real-Time Queue Simulator**:
-   - A live ticker simulator that feeds job logs (successes, warnings, failures) dynamically.
-   - Live metrics calculations including total jobs processed, historical failure rates, and rolling average latency.
-   - Adjustable stream controls (1x speed, 2x speed, Pause).
+### 1. Interactive Lamp Emulator
+- **Mouse Coordinate Orientation**: The lamp head and support joints adjust angles dynamically to follow the cursor.
+- **Diffuse Beam Cast**: Renders radial and linear gradients that fade organically, casting a warm light cone across the viewport.
+- **State Toggles**: Smooth fade-in and fade-out animations when switching the lamp ON/OFF.
 
-2. **Telemetry Details & SQL Profiling**:
-   - Clicking any active task row in the console (such as the failed `UpdateSubscription` task) displays deep contextual arguments, attempt counts, and the exact database queries that were executed during the lifecycle.
-   - Designed to address the "black box background queue" developer pain point directly.
+### 2. Presets & Scenes Panel
+- **Default Scenes**: Swap between **FOCUS** (4100K, 82% brightness), **READING** (3200K, 60% brightness), and **WIND DOWN** (2200K, 30% brightness) to watch the lamp adapt in real-time.
+- **Save Scene CTA**: Exposes a summary of the current presets configuration, linking configuration values to account registration.
 
-3. **Restrained, Premium Polish**:
-   - Elegant dark theme built around a deep charcoal background with glowing gradients, backdrop blur navigations, and clean margins.
-   - Strictly responsive, tested to look shipped on both `390px` mobile screens and `1440px` desktop viewports.
+### 3. Progressive Exploded Reveal
+- Scroll-triggered components section. As the page scrolls, the lamp joints expand along offset coordinates, highlighting internal components (Light Engine, Diffuser, Precision Arm, Ambient Sensor, Control Core).
 
-4. **Retro System Override Easter Egg**:
-   - Focus the browser window and type the classic Konami code sequence: `↑ ↑ ↓ ↓ ← → ← → B A`.
-   - Unlocks a fully interactive terminal overlay complete with canvas Matrix-style digital rain, custom system diagnostics command prompts, and crash logs.
+### 4. Presets Timeline Automation
+- Drag timeline handles from 08:00 to 20:00 to see how the lamp's light output transitions over a normal day.
+
+### 5. Hidden Engineering HUD Easter Egg
+- Clicking the **LUMA logo 5 times** opens an engineering dashboard display detailing LED temperatures, power ratings, voltage feedback, and real-time microvolt streams.
 
 ---
 
-## 🛠️ Local Development & Scaffolding
+## 🛠️ Technology Stack
+- **Core**: HTML5, Vanilla JavaScript, Canvas API.
+- **Styling**: Vanilla CSS (Premium Monochrome theme).
+- **Tooling**: Vite (Development & Production bundling).
 
-This project is built using a modern bundle system with Vanilla JS and CSS for optimal load speeds, SEO indexing, and ease of deployment.
+---
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- npm (installed automatically with Node.js)
+## 🚀 Setup & Installation
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Madhavhk04/Acydon-Pulse.git
-   cd Acydon-Pulse
-   ```
-2. Install local development tools:
+### Local Development
+1. Install dependencies:
    ```bash
    npm install
    ```
+2. Start local hot-reload dev server:
+   ```bash
+   npm run dev
+   ```
+3. Open `http://localhost:5173/` in your browser.
 
-### Command Scripts
-* **Local Dev Server**: Launches Vite server on your local port (default is `http://localhost:5173/`):
-  ```bash
-  npm run dev
-  ```
-* **Production Build**: Compiles static, highly optimized HTML, JS, and CSS files into a `/dist` directory for easy hosting on Vercel, Netlify, or Github Pages:
-  ```bash
-  npm run build
-  ```
-* **Build Preview**: Spin up a local server to test the built production bundle:
-  ```bash
-  npm run preview
-  ```
+### Production Build
+1. Compile and bundle static assets:
+   ```bash
+   npm run build
+   ```
+2. The bundled assets will be exported to the `/dist` directory.
 
 ---
 
-## 📁 File Structure
-```
-├── README.md               # Main instructions and setup documentation
-├── DECISIONS.md            # Challenge decisions document (design, trade-offs, AI verify)
-├── index.html              # Entry semantic HTML5 template and layout
-├── package.json            # Vite scripts and workspace configurations
-├── src/
-│   ├── main.js             # Simulation engine, tab code copier, easter egg, and interaction listeners
-│   ├── style.css           # Premium HSL color scheme variables, animation keyframes, and media queries
-│   └── assets/             # Brand logos, icons, and SVG graphic buffers
-└── public/                 # Static favicon and icon sets
-```
-
----
-
-## 🛠️ Design & Tech Stack Choices
-- **Build Tool**: Vite (Vanilla Javascript template)
-- **Styling**: Vanilla CSS (no TailwindCSS or heavy UI frameworks, keeping payload sizes negligible and ensuring maximum flexibility)
-- **Aesthetics**: Outfit/Plus Jakarta Sans typography, custom SVGs to bypass external asset latencies, HSL tailormade colors, and glassmorphic elements.
-- **Observability Logic**: Deterministic JS state machine loops demonstrating real developer APM console views.
+## 🌐 Deployment Links
+- **GitHub Repository**: [https://github.com/Madhavhk04/Acydon-Pulse](https://github.com/Madhavhk04/Acydon-Pulse)
+- **Live Website**: [https://acydon-pulse.vercel.app/](https://acydon-pulse.vercel.app/)
+- **Walkthrough Video**: [https://acydon-pulse.vercel.app/pulse_home_page_flow.webp](https://acydon-pulse.vercel.app/pulse_home_page_flow.webp)

@@ -1,31 +1,30 @@
-# Engineering Decisions — Acydon Pulse Premium Home Page
+# Engineering Decisions — LUMA Smart Lighting 3D Showroom
 
-This document details the critical technical and design decisions made while developing the landing page for **Acydon Pulse**.
-
----
-
-### 1. Ingestion Strategy: Interactive Product Simulation vs. Marketing Copy
-Instead of the standard SaaS landing page template (relying on fabricated user metrics, generic stock screenshots, and mock corporate logos—which we explicitly rejected to maintain absolute transparency), we implemented a **Product-UI Ingestion Strategy**. 
-
-The target audience (engineers) processes value through code and interface utility. By placing a fully interactive, live-simulated worker queue console directly in the hero layout, we let developers "ingest" the product experience immediately. The simulator is clearly marked with `SIMULATION • LIVE DEMO`. It demonstrates:
-- How failures (`UpdateSubscription`) capture arguments and exact SQL statements.
-- Live queue latency, worker load, and process outcomes.
-- How the observability engine captures thread-local context with negligible overhead.
-
-This approach immediately establishes technical credibility in the first 3 seconds, aligning with the challenge's "honesty" and "systems thinking" criteria.
+This document outlines the technical and product design decisions made while developing the landing page for **LUMA**.
 
 ---
 
-### 2. Time-Limit Trade-offs & A Real Week's Scope
-- **The Trade-off**: The landing page console operates on a deterministic JavaScript state machine containing mock job structures. There is no active backend agent process capturing live events.
-- **With a Real Week**: We would develop a lightweight agent package (`@acydon/pulse-agent`) that hooks into Celery/Sidekiq/BullMQ middleware. The agent would run a background thread to batch and flush task traces out-of-band to a local receiver. We would build a dockerized demo environment where a user could run `docker-compose up` to run actual worker tasks (generating database transactions) and watch them stream in real-time to the dashboard via WebSockets.
+### 1. Conceptual Pivot & Product Ingestion Strategy
+We replaced the background task observer website with **LUMA**, a premium smart architectural desk lamp and lighting preset account. 
+- **The Core Goal**: Sell the physical material design and software presets immediately.
+- **Ingestion Strategy**: Instead of standard marketing copy, the page serves as a **digital showroom**. Placing an interactive hardware emulator directly on the screen allows developers to "touch" the lamp before buying it. They see the physical head adjust angles, and experience warm illumination gradients spreading across the page.
+- **The Rationale for Accounts**: Users save custom scene values (brightness and Kelvins). The signup CTA becomes a natural step to sync settings with their hardware.
 
 ---
 
-### 3. AI Collaboration & Verification Details
-- **AI Utilization**: We pair-programmed with AI to scaffold the initial boilerplate HTML5 tags, compile basic CSS grid frameworks, and generate syntax code blocks for the integration panel.
-- **Human Verification & Refinement**:
-  1. **Visual Polish & Restraint**: Cleaned up the animation budget. Kept transitions minimal, making the live job ticker the main motion source, and limited other movements to subtle hover indicators to prevent visual fatigue.
-  2. **Mobile Layout Integrity**: Manually adjusted flex layout margins and collapsed columns in CSS media queries to guarantee a seamless fit at `390px` mobile width (specifically testing table padding and code wrapping) and `1440px` desktop views.
-  3. **Performance Optimization**: Wrote custom, clean inline SVGs instead of fetching external fonts/icons, minimizing render-blocking requests.
-  4. **Easter Egg Lifecycle**: Engineered the canvas Matrix animation to completely clear its redraw interval and event listeners when closed, preventing background thread memory leaks.
+### 2. Three.js WebGL Scene & Raycasting Hinge Joint Physics
+To render the desk lamp, we chose **Three.js WebGL** to achieve high-fidelity materiality and shadow depth:
+- **Hinge Mechanical Hierarchy**: Built a double-arm joint system (`BaseGroup` -> `LowerArmGroup` -> `UpperArmGroup` -> `HeadGroup`).
+- **Interactive Raycasting**: A mathematical plane is defined at the desk surface height. We cast a ray from the camera through the mouse coordinates onto this plane. The lamp joints dynamically rotate, pointing the head toward the cursor with a realistic mechanical drag (lerp inertia).
+- **Physical Lighting & Shadows**: A `THREE.SpotLight` inside the lamp head casts shadows of the laptop, mug, and plant pot onto the desk.
+- **Scroll Camera Interpolations**: Camera position vectors and lamp components (diffuser casing, hinge pins) are interpolated on scroll to separate and reassemble.
+- **Performance Trade-off**: All elements are created using procedural Three.js geometries (boxes, cylinders, dodecahedrons) rather than downloading heavy `.gltf` assets. This keeps loading times instant and file sizes tiny while delivering 60fps.
+
+---
+
+### 3. AI Collaboration & Verification Metrics
+- **AI Tasking**: Used AI to write the basic joint hierarchy groups, structure the hex-to-rgb color matrices, and design the timeline dragger touch event listeners.
+- **Manual Verification**:
+  1. *Mobile Viewport*: Stacked controls vertically at `390px` mobile sizes, scaling canvas dimensions so the light beam remains visually prominent.
+  2. *Drag Boundaries*: Programmed touch gesture coordinates to prevent timeline handle offsets from snapping out of bounds.
+  3. *Leak Prevention*: Verified that escaping the logo diagnostics console clears numerical update loops and keydown listeners.
