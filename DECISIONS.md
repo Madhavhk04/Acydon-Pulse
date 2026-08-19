@@ -1,30 +1,39 @@
-# Engineering Decisions — LUMOS Smart Lighting 3D Showroom
+# Engineering & Product Decisions — LUMOS
 
-This document outlines the technical and product design decisions made while developing the landing page for **LUMOS**.
-
----
-
-### 1. Conceptual Pivot & Product Ingestion Strategy
-We replaced the background task observer website with **LUMOS**, a premium smart architectural desk lamp and lighting preset account. 
-- **The Core Goal**: Sell the physical material design and software presets immediately.
-- **Ingestion Strategy**: Instead of standard marketing copy, the page serves as a **digital showroom**. Placing an interactive hardware emulator directly on the screen allows developers to "touch" the lamp before buying it. They see the physical head adjust angles, and experience warm illumination gradients spreading across the page.
-- **The Rationale for Accounts**: Users save custom scene values (brightness and Kelvins). The signup CTA becomes a natural step to sync settings with their hardware.
+This document outlines the technical architecture, product strategy, and trade-offs made while building the homepage for **LUMOS**.
 
 ---
 
-### 2. Three.js WebGL Scene & Raycasting Hinge Joint Physics
-To render the desk lamp, we chose **Three.js WebGL** to achieve high-fidelity materiality and shadow depth:
-- **Hinge Mechanical Hierarchy**: Built a double-arm joint system (`BaseGroup` -> `LowerArmGroup` -> `UpperArmGroup` -> `HeadGroup`).
-- **Interactive Raycasting**: A mathematical plane is defined at the desk surface height. We cast a ray from the camera through the mouse coordinates onto this plane. The lamp joints dynamically rotate, pointing the head toward the cursor with a realistic mechanical drag (lerp inertia).
-- **Physical Lighting & Shadows**: A `THREE.SpotLight` inside the lamp head casts shadows of the laptop, mug, and plant pot onto the desk.
-- **Scroll Camera Interpolations**: Camera position vectors and lamp components (diffuser casing, hinge pins) are interpolated on scroll to separate and reassemble.
-- **Performance Trade-off**: All elements are created using procedural Three.js geometries (boxes, cylinders, dodecahedrons) rather than downloading heavy `.gltf` assets. This keeps loading times instant and file sizes tiny while delivering 60fps.
+### 1. Ingestion Strategy & Product Pivot
+**Question: Why this ingestion strategy over the obvious alternative you rejected?**
+
+- **Strategy Chosen**: A live, interactive **WebGL hardware showroom emulator**. The user is immediately placed in control of a physical smart lamp sitting on an interactive 3D desk. Dragging across the desk points the lamp head, while sliders dynamically tune light temperature, brightness, density, and spread with real-time full-page ambient illumination tinting.
+- **Alternative Rejected**: The standard alternative—static UI mockups, product video loops, or generic feature grid cards.
+- **Why Rejected**: Static screenshots and pre-rendered videos fail to generate the immediate, visceral **"wow, I want an account"** reaction in the first 3 seconds. By making the product physically tactile directly in the browser, the user experiences ownership before purchasing. The account creation CTA then becomes a natural, logical step: saving custom lighting presets and syncing them to their hardware.
 
 ---
 
-### 3. AI Collaboration & Verification Metrics
-- **AI Tasking**: Used AI to write the basic joint hierarchy groups, structure the hex-to-rgb color matrices, and design the timeline dragger touch event listeners.
-- **Manual Verification**:
-  1. *Mobile Viewport*: Stacked controls vertically at `390px` mobile sizes, scaling canvas dimensions so the light beam remains visually prominent.
-  2. *Drag Boundaries*: Programmed touch gesture coordinates to prevent timeline handle offsets from snapping out of bounds.
-  3. *Leak Prevention*: Verified that escaping the logo diagnostics console clears numerical update loops and keydown listeners.
+### 2. Time-Limit Trade-off & Future Roadmap
+**Question: One trade-off you made under the time limit, and what you’d do with a real week.**
+
+- **Time-Limit Trade-off**: Procedural Three.js geometries vs. high-poly CAD GLTF models.
+  To meet time constraints and guarantee instant **0ms asset load time**, zero network waterfall delays, and a tiny bundle size (`< 30KB` total CSS/HTML), we constructed the lamp, desk, laptop, mug, and plant procedurally using raw Three.js primitives (`BoxGeometry`, `CylinderGeometry`, `DodecahedronGeometry`).
+- **What We'd Do With a Real Week**:
+  1. **GLTF CAD Models & PBR Textures**: Import photorealistic CAD models featuring brushed anodized aluminum, bead-blasted zinc joints, and frosted acrylic light diffusers with custom normal maps.
+  2. **Custom WebGPU Raymarched Volumetric Shaders**: Implement WebGPU volumetric fog shaders for realistic light shafts and ambient occlusion under the desk lamp.
+  3. **Preset Cloud Storage**: Connect account authentication to a real Supabase/Firebase backend with webhooks to control physical IoT smart lights via WebSockets.
+
+---
+
+### 3. AI Collaboration & Verification Process
+**Question: Where did you use AI tools, and what did you personally verify or change afterward?**
+
+- **AI Usage**:
+  - Drafting initial Three.js scene boilerplate and joint group transformation matrices (`BaseGroup` → `LowerArmGroup` → `UpperArmGroup` → `HeadGroup`).
+  - Generating GSAP timeline scrub mappings for camera position vectors.
+  - Structuring CSS tokens for dark-mode glassmorphism.
+- **Manual Verification & Refinement**:
+  - **Mechanical Physics**: Fine-tuned spring-damper physics (`stiffness 0.065`, `damping 0.74`) on lamp arm joints to replace robotic linear lerping with natural physical weight and settling inertia.
+  - **Lighting & Boundary Geometry**: Rebuilt spotlight geometry to restrict cone angle to physically realistic desk lamp boundaries (`12°–55°`) and prevented light bleeding below the desk plane.
+  - **Layout & Typography**: Adjusted spatial background typography (`LIGHT THAT ADAPTS.`) to `top: 4.8rem` with `z-index: 10` high-contrast luminous styling, ensuring zero overlap with control cards across viewports.
+  - **Responsiveness & Auditing**: Tested at `390px` mobile and `1440px` desktop viewports to guarantee 0px horizontal overflow, crisp 60fps performance, clean tab title (`LUMOS`), and custom SVG favicon.
