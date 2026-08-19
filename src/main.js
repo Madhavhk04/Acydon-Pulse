@@ -146,8 +146,23 @@ function init3DScene() {
   deskIntersectionPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 1.9);
 
   // LIGHTS
-  ambientLight = new THREE.AmbientLight(0xffffff, 0.03); // very subtle ambient room brightness
+  ambientLight = new THREE.AmbientLight(0xffffff, 0.15); // soft base room illumination
   scene.add(ambientLight);
+
+  // Studio Key Light (top-front-left)
+  const keyLight = new THREE.DirectionalLight(0xffffff, 0.5);
+  keyLight.position.set(-6, 8, 6);
+  scene.add(keyLight);
+
+  // Studio Fill Light (soft right shadow fill)
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.2);
+  fillLight.position.set(6, 4, 3);
+  scene.add(fillLight);
+
+  // Studio Rim Light (backlight highlighting metal silhouettes)
+  const rimLight = new THREE.DirectionalLight(0xffffff, 0.35);
+  rimLight.position.set(0, 6, -8);
+  scene.add(rimLight);
 
   // Active SpotLight (Light Engine)
   spotLight = new THREE.SpotLight(0xffffff, 0);
@@ -169,7 +184,7 @@ function init3DScene() {
   // PROCEDURAL WORKSPACE ENVIRONMENT
   // 1. Desk Surface
   const deskGeo = new THREE.BoxGeometry(16, 0.2, 10);
-  const deskMat = new THREE.MeshStandardMaterial({ color: 0x0f0f11, roughness: 0.7, metalness: 0.15 });
+  const deskMat = new THREE.MeshStandardMaterial({ color: 0x1c1c1f, roughness: 0.5, metalness: 0.2 });
   desk = new THREE.Mesh(deskGeo, deskMat);
   desk.position.y = -2;
   desk.receiveShadow = true;
