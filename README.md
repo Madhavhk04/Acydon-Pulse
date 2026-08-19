@@ -60,4 +60,3 @@ The site is built as a digital product showroom. It lets visitors interact with 
 ## 🌐 Deployment Links
 - **GitHub Repository**: [https://github.com/Madhavhk04/Acydon-Pulse](https://github.com/Madhavhk04/Acydon-Pulse)
 - **Live Website**: [https://acydon-pulse.vercel.app/](https://acydon-pulse.vercel.app/)
-- **Walkthrough Video**: [https://acydon-pulse.vercel.app/pulse_home_page_flow.webp](https://acydon-pulse.vercel.app/pulse_home_page_flow.webp)
