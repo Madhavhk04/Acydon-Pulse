@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary SEO Meta Tags -->
-    <title>LUMOS — Light that knows how you work.</title>
-    <meta name="title" content="LUMOS — Light that knows how you work." />
+    <title>LUMOS</title>
+    <meta name="title" content="LUMOS" />
     <meta name="description" content="LUMOS is a premium adaptive lighting system designed around the way you work." />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="LUMOS — Light that knows how you work." />
+    <meta property="og:title" content="LUMOS" />
     <meta property="og:description" content="LUMOS is a premium adaptive lighting system designed around the way you work." />
 
     <!-- Google Fonts -->
@@ -24,6 +24,48 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <!-- Temperature Colour Cast Overlay -->
+    <div id="temp-cast-overlay" class="temp-cast-overlay"></div>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+      <div class="preloader-content">
+        <div class="preloader-logo-wrap">
+          <span class="preloader-title">LUMOS</span>
+        </div>
+        <span class="preloader-subtitle">LIGHT ENGINE INITIALIZING</span>
+        <div class="preloader-progress-wrap">
+          <span class="preloader-counter">00</span>
+          <div class="preloader-progress-line">
+            <div class="preloader-progress-fill" id="preloader-progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor (dot + ring) -->
+    <div id="custom-cursor" class="custom-cursor">
+      <div class="cursor-ring"></div>
+      <div class="cursor-dot"></div>
+      <div class="cursor-label">EXPLORE</div>
+    </div>
+
+    <!-- Global Chapter Indicator -->
+    <div id="chapter-indicator" class="chapter-indicator">
+      <span class="chapter-current" id="chapter-current">01</span>
+      <span class="chapter-separator">/</span>
+      <span class="chapter-total">06</span>
+      <span class="chapter-label" id="chapter-label">DISCOVER</span>
+    </div>
+
+    <!-- Global Scroll Indicator -->
+    <div id="scroll-indicator" class="scroll-indicator">
+      <span class="scroll-label">SCROLL</span>
+      <div class="scroll-line-wrapper">
+        <div class="scroll-line-progress" id="scroll-line-progress"></div>
+      </div>
+    </div>
+
     <!-- Fixed Cinematic WebGL 3D Canvas Backdrop -->
     <div id="canvas-container">
       <canvas id="lumos-webgl-canvas"></canvas>
@@ -62,14 +104,14 @@
               <span class="badge-text"><span class="badge-pulse"></span>3D HARDWARE EMULATOR</span>
             </div>
             <h1 class="hero-title">
-              Light that knows<br>
-              how you work.
+              <span class="line-mask"><span class="line-text">Light that knows</span></span><br>
+              <span class="line-mask"><span class="line-text">how you work.</span></span>
             </h1>
             <p class="hero-subtitle">
               LUMOS adapts your workspace to the moment — from deep focus to late-night wind-down.
             </p>
             <div class="hero-cta-group">
-              <button class="btn btn-primary" id="cta-create-account-hero">Create your LUMOS account →</button>
+              <button class="btn btn-primary" id="cta-create-account-hero"><span class="btn-text">Create your LUMOS account</span><span class="btn-arrow">→</span></button>
               <a href="#playground-section" class="btn btn-secondary">Explore LUMOS</a>
             </div>
 
@@ -83,20 +125,71 @@
             </div>
           </div>
         </div>
+
+        <!-- Live Telemetry Ticker -->
+        <div class="hero-ticker" id="hero-ticker">
+          <div class="ticker-track" id="ticker-track">
+            <span class="ticker-item">LUMOS STATUS: NOMINAL</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">TEMP: <span class="tick-val" id="tick-temp">4100K</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">BRIGHTNESS: <span class="tick-val" id="tick-brightness">82%</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">COVERAGE: <span class="tick-val" id="tick-coverage">2.2m²</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">SENSOR: ACTIVE</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">KERNEL v1.4.2</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">CRI 97+</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">FLICKER-FREE 50,000Hz</span><span class="ticker-sep"> ──  </span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">LUMOS STATUS: NOMINAL</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">TEMP: <span class="tick-val">4100K</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">BRIGHTNESS: <span class="tick-val">82%</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">COVERAGE: <span class="tick-val">2.2m²</span></span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">SENSOR: ACTIVE</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">KERNEL v1.4.2</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">CRI 97+</span><span class="ticker-sep"> ──  </span>
+            <span class="ticker-item">FLICKER-FREE 50,000Hz</span><span class="ticker-sep"> ──  </span>
+          </div>
+        </div>
       </section>
+
+      <!-- Specs Marquee Strip -->
+      <div class="specs-marquee-section" aria-hidden="true">
+        <div class="marquee-track">
+          <span>DUAL-CORE LED MATRIX</span><span class="mq-sep">──</span>
+          <span>CRI 97+</span><span class="mq-sep">──</span>
+          <span>FLICKER-FREE 50,000Hz</span><span class="mq-sep">──</span>
+          <span>COLOUR TEMP 2700K–6500K</span><span class="mq-sep">──</span>
+          <span>MECHANICAL PRECISION ARM</span><span class="mq-sep">──</span>
+          <span>PHOTOCELL AMBIENT SENSING</span><span class="mq-sep">──</span>
+          <span>LUMOS SYNC PROTOCOL</span><span class="mq-sep">──</span>
+          <span>DUAL-CORE LED MATRIX</span><span class="mq-sep">──</span>
+          <span>CRI 97+</span><span class="mq-sep">──</span>
+          <span>FLICKER-FREE 50,000Hz</span><span class="mq-sep">──</span>
+          <span>COLOUR TEMP 2700K–6500K</span><span class="mq-sep">──</span>
+          <span>MECHANICAL PRECISION ARM</span><span class="mq-sep">──</span>
+          <span>PHOTOCELL AMBIENT SENSING</span><span class="mq-sep">──</span>
+          <span>LUMOS SYNC PROTOCOL</span><span class="mq-sep">──</span>
+        </div>
+      </div>
 
       <!-- Scene 2: Interactive Playground (Design Your Light) -->
       <section class="playground-section" id="playground-section">
+        <!-- Massive Spatial Typography -->
+        <div class="spatial-typography" data-speed="0.2">
+          <span class="spatial-word">LIGHT</span>
+          <span class="spatial-word">THAT</span>
+          <span class="spatial-word">ADAPTS.</span>
+        </div>
         <div class="container playground-layout">
           <!-- Text column -->
           <div class="playground-info">
-            <span class="tag-badge">THE PLAYGROUND</span>
-            <h2 class="section-title">Design your light.</h2>
-            <p class="section-description">
+            <span class="tag-badge reveal-item" data-delay="0">THE PLAYGROUND</span>
+            <h2 class="section-title">
+              <span class="line-mask"><span class="line-text">Design your light.</span></span>
+            </h2>
+            <p class="section-description reveal-item" data-delay="0.25">
               Shape the light around the way you work. Click and drag directly on the 3D desk surface to orient the lamp head, or tune specifications below.
             </p>
             
-            <div class="readout-box">
+            <div class="readout-box reveal-item" data-delay="0.35">
               <span class="readout-label">LIGHT COVERAGE</span>
               <span class="readout-value" id="readout-coverage">1.8 m²</span>
               <span class="readout-sub">SIMULATED COVERAGE AREA</span>
@@ -104,7 +197,7 @@
           </div>
 
           <!-- Controls Column -->
-          <div class="playground-controls-card">
+          <div class="playground-controls-card reveal-item" data-delay="0.2">
             <div class="controls-header">
               <span class="controls-badge">SPECIFICATION INTERFACE</span>
               <h3 class="controls-title">Environment Controls</h3>
@@ -157,7 +250,7 @@
                   <span class="slider-name">LIGHT SPREAD</span>
                   <span class="slider-value" id="val-spread">52°</span>
                 </div>
-                <input type="range" class="control-slider" id="slider-spread" min="20" max="90" value="52" />
+                <input type="range" class="control-slider" id="slider-spread" min="12" max="55" value="24" />
               </div>
 
               <!-- Mechanical Angle Control joystick helper -->
@@ -177,29 +270,32 @@
       <section class="presets-section" id="presets-section">
         <div class="container presets-layout">
           <div class="presets-info">
-            <span class="tag-badge">YOUR PRESETS</span>
-            <h2 class="section-title">Your light. Your presets.</h2>
-            <p class="section-description">
+            <span class="tag-badge reveal-item" data-delay="0">YOUR PRESETS</span>
+            <h2 class="section-title">
+              <span class="line-mask"><span class="line-text">Your light.</span></span>
+              <span class="line-mask"><span class="line-text">Your presets.</span></span>
+            </h2>
+            <p class="section-description reveal-item" data-delay="0.25">
               Synchronize preset slots with your account. Watch the mechanical joints glide into place as you tap each profile slot.
             </p>
           </div>
 
           <div class="presets-grid">
-            <div class="preset-card active" data-preset="focus">
+            <div class="preset-card active reveal-item" data-preset="focus" data-delay="0.1">
               <span class="preset-time">08:00</span>
               <h3 class="preset-title">Focus Mode</h3>
               <div class="preset-spec">82% • 4100K</div>
               <p class="preset-desc">Crisp white illumination casting focused light on your workspace to start the day.</p>
             </div>
             
-            <div class="preset-card" data-preset="reading">
+            <div class="preset-card reveal-item" data-preset="reading" data-delay="0.2">
               <span class="preset-time">14:00</span>
               <h3 class="preset-title">Reading Mode</h3>
               <div class="preset-spec">64% • 3500K</div>
               <p class="preset-desc">Balanced temperature and spread optimal for reading print material and notebooks.</p>
             </div>
 
-            <div class="preset-card" data-preset="wind-down">
+            <div class="preset-card reveal-item" data-preset="wind-down" data-delay="0.3">
               <span class="preset-time">20:00</span>
               <h3 class="preset-title">Wind Down</h3>
               <div class="preset-spec">32% • 2700K</div>
@@ -214,9 +310,12 @@
         <div class="container reveal-layout">
           <!-- Text triggers on the left -->
           <div class="reveal-triggers">
-            <span class="tag-badge">EXPLORATION</span>
-            <h2 class="reveal-title">Designed around your attention.</h2>
-            <p class="reveal-subtitle">Scroll slowly to isolate components in 3D space.</p>
+            <span class="tag-badge reveal-item" data-delay="0">EXPLORATION</span>
+            <h2 class="reveal-title">
+              <span class="line-mask"><span class="line-text">Designed around</span></span><br>
+              <span class="line-mask"><span class="line-text">your attention.</span></span>
+            </h2>
+            <p class="reveal-subtitle reveal-item" data-delay="0.2">Scroll slowly to isolate components in 3D space.</p>
             
             <div class="exploded-item active" data-explode-step="0">
               <span class="exploded-num">01</span>
@@ -257,6 +356,12 @@
                 <span class="exploded-desc">Base integration circuit storing settings and enabling manual swiping coordinates.</span>
               </div>
             </div>
+
+            <!-- Light Sweep Reveal Moment -->
+            <div class="light-sweep-text" id="light-sweep-text">
+              <span class="line-mask"><span class="line-text sweep-line">Light changes</span></span>
+              <span class="line-mask"><span class="line-text sweep-line">everything.</span></span>
+            </div>
           </div>
           
           <!-- Spacer column: visualizes Three.js fixed canvas on the right -->
@@ -268,14 +373,17 @@
       <section class="automation-section" id="automation-section">
         <div class="container automation-layout">
           <div class="automation-info">
-            <span class="tag-badge">CHRONOMETRY</span>
-            <h2 class="section-title">Your environment should remember.</h2>
-            <p class="section-description">
+            <span class="tag-badge reveal-item" data-delay="0">CHRONOMETRY</span>
+            <h2 class="section-title">
+              <span class="line-mask"><span class="line-text">Your environment</span></span>
+              <span class="line-mask"><span class="line-text">should remember.</span></span>
+            </h2>
+            <p class="section-description reveal-item" data-delay="0.25">
               Specify automation loops. Tap coordinates along the timeline to schedule smooth 30-minute transitions, synchronizing lamp parameters.
             </p>
           </div>
 
-          <div class="timeline-visualizer-card">
+          <div class="timeline-visualizer-card reveal-item" data-delay="0.2">
             <div class="timeline-bar">
               <div class="timeline-progress" id="timeline-progress-bar"></div>
               <div class="timeline-handle" id="timeline-drag-handle"></div>
@@ -303,7 +411,7 @@
       <section class="account-cta-section">
         <div class="cta-gradient-overlay"></div>
         <div class="container save-cta-layout">
-          <div class="save-status-display">
+          <div class="save-status-display reveal-item" data-delay="0.1">
             <div class="save-status-header">
               <span class="save-badge">HARDWARE PROFILE STATE</span>
               <h4 class="save-title">Save Custom Preset</h4>
@@ -332,12 +440,15 @@
             </div>
           </div>
 
-          <div class="save-action-details">
-            <h2 class="save-action-title">Save this setup to your LUMOS account.</h2>
-            <p class="save-action-desc">
+          <div class="save-action-details reveal-item" data-delay="0">
+            <h2 class="save-action-title">
+              <span class="line-mask"><span class="line-text">Save this setup to</span></span>
+              <span class="line-mask"><span class="line-text">your LUMOS account.</span></span>
+            </h2>
+            <p class="save-action-desc reveal-item" data-delay="0.3">
               Your LUMOS account synchronizes saved scene calibrations immediately with your physical hardware lamp, maintaining lighting presets across profiles.
             </p>
-            <button class="btn btn-primary" id="cta-save-preset">Create your LUMOS account →</button>
+            <button class="btn btn-primary" id="cta-save-preset"><span class="btn-text">Create your LUMOS account</span><span class="btn-arrow">→</span></button>
           </div>
         </div>
       </section>
@@ -345,12 +456,14 @@
       <!-- Final minimal CTA -->
       <section class="final-cta-section">
         <div class="container text-center">
-          <h2 class="cta-title">Make your workspace yours.</h2>
-          <p class="cta-description">
+          <h2 class="cta-title">
+            <span class="line-mask"><span class="line-text">Make your workspace yours.</span></span>
+          </h2>
+          <p class="cta-description reveal-item" data-delay="0.2">
             Create your LUMOS profile, store custom preset configurations, and adapt illumination curves organically.
           </p>
-          <div class="cta-actions">
-            <button class="btn btn-primary" id="cta-final-register">Create your LUMOS account →</button>
+          <div class="cta-actions reveal-item" data-delay="0.35">
+            <button class="btn btn-primary" id="cta-final-register"><span class="btn-text">Create your LUMOS account</span><span class="btn-arrow">→</span></button>
           </div>
         </div>
       </section>
@@ -390,7 +503,11 @@
               <input type="password" id="signup-password" placeholder="••••••••" required autocomplete="new-password" />
             </div>
             
-
+            <!-- Preset sync summary tag (syncing-preset-text restored) -->
+            <div class="preset-summary-tag">
+              <span class="tag-title">ACTIVE PRESET</span>
+              <span class="tag-value" id="syncing-preset-text">Focus Mode • 82% brightness • 4100K</span>
+            </div>
 
             <button type="submit" class="btn btn-primary btn-block" id="modal-submit-btn">Create account</button>
           </form>
